@@ -353,6 +353,15 @@ public class SchematicCommands {
     ) throws FilenameException {
         LocalConfiguration config = worldEdit.getConfiguration();
 
+        //CrystalDev start
+        if ("schem".equals(filename) && formatName != null && formatName.startsWith("url:")) {
+            // filename and formatName are swapped here.
+            // explicitly stated 'schem' format should be ignored
+            filename = formatName;
+            formatName = null;
+        }
+        //CrystalDev end
+
         //FAWE start
         ClipboardFormat format;
         InputStream in;
